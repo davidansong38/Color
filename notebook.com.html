@@ -25,6 +25,8 @@
    letter-spacing: 5px;
    font-style: italic;
    color: #fff;
+   cursor: pointer;
+   text-shadow: 1px 2px 11px rgb(125,23,155);
    }
  #first-div input[list=search]{
    position: absolute;
@@ -41,14 +43,39 @@
    right: 0px;
    cursor: pointer;
    }
- @media only 
+.text{
+   border-top: none;
+   border-left: none;
+   border-right: none;
+   font-style: italic;
+   font-family: Arial-serif;
+   font-size: 20px;
+   word-spacing: 5px;
+   outline:  none;
+   box-shadow: 1px 2px 7px 0px rgb(120, 25, 255);
+   right: 10px;
+  }
+  
+ .text:hover{ 
+   background-color: rgb(125,25,255);
+   }
+ .sec-div #form #input-1{
+   position: absolute;
+   top: 120px;
+ }
+ .sec-div #form #input-2{
+   position: absolute;
+   top: 160px;
+ }
+ 
+ @media only screen and (max-width: 500px) | (min-width: 200px) and (min-width: 300px){}
+ 
  </style>
 </head>
-
 <body>
 
  <div id="first-div">
-  <h1 class="first-header" style="padding-left:  5px">Notebook</h1>
+  <h1 class="first-header" style="padding-left:  5px" title="notebook.com" target="_blank" href="#">Notebook</h1>
   <input list="search">
    <datalist id="search" name="search">
     <option name="any">What is computer programming</option>
@@ -60,12 +87,16 @@
    </datalist>
   <input class="input" style="background-color: inherit" type="submit" name="Login" value="Login">
  </div>
-
+ 
+ <div class="sec-div">
+  <form id="form" action="http://www.dbacarcollections.ueuo.com" method="post" name="web_link">
+   <input id="input-1" class="text" type="text" class="text" name="fname" placeholder="First Name">
+   <input id="input-2" class="text" type="text" name="lname" placeholder="Last Name">
+ </div>
+ 
 <script type="text/javascript">
   var date_time = new Date();
   //alert(date_time);
 </script>
 </body>
-
-
 </html>
