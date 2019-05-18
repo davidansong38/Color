@@ -13,7 +13,10 @@
  *{
    box-sizing: border-box;
   }
-  #first-div{
+ body{
+     background-color: #fff;
+  }
+  div#first-div{
    background-color: rgb(125,25,255);
    position: absolute;
    top: 0px;
@@ -22,6 +25,7 @@
    bottom: 860px;
   }
  #first-div .first-header{
+   background-color: rgb(125,25,255);
    letter-spacing: 5px;
    font-style: italic;
    color: #fff;
@@ -69,10 +73,26 @@
  }
  
  @media only screen and (max-width: 500px) | (min-width: 200px) and (min-width: 300px){}
- 
+
+div footer{
+   position: absolute;
+   top: 450px;
+   background-color: #000;
+   bottom: 0px;
+   right: 0px;
+   left: 0px;
+}
+div footer.footer{
+   color: white;
+   text-align: center;
+   text-decoration: none;
+   outline: none;
+   padding: 12px;
+   
+}
  </style>
 </head>
-<body>
+<body style="background-color: rgb()">
 
  <div id="first-div">
   <h1 class="first-header" style="padding-left:  5px" title="notebook.com" target="_blank" href="#">Notebook</h1>
@@ -85,7 +105,7 @@
     <option name="any">System Administrator</option>
     <option name="any">Web Programming and Technologies</option>
    </datalist>
-  <input class="input" style="background-color: inherit" type="submit" name="Login" value="Login">
+  <input class="input" style="background-color: inherit" type="submit" name="Login" value="Login" onclick="confirm('Press OK or Cancel to Confirm')">
  </div>
  
  <div class="sec-div">
@@ -96,7 +116,14 @@
  
 <script type="text/javascript">
   var date_time = new Date();
-  //alert(date_time);
+  //alert(window.screen.availHeight);
 </script>
+
+<div>
+ <footer class="footer" name="ft">
+  Visit us @facebook.com
+ </footer>
+ 
+</div>
 </body>
 </html>
