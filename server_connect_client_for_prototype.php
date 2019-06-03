@@ -8,6 +8,11 @@
 ?>
 
 <?php
+  include "main.php"
+  require "sys.php"
+?>
+
+<?php
   $servername = "localhost/127.0.01";
   $username = "root";
   $password = "d98393jdkdkidie";
