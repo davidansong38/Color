@@ -46,6 +46,9 @@
    outline: none;
    padding-left: 7px;
  }
+ div.fdiv h1#hit:hover{
+   font-size: 15px;
+ }
 .row::before{
    content: "";
    display: table;
@@ -104,6 +107,10 @@ footer{
    color: white;
    text-align: center;
 }
+#lst{
+   position: absolute;
+   top: 30px;
+}
 </style>
 </head>
 <body id="body" name="notebook_alca_chapter" value="Startup_Begy" motor="We Live For You" reg="global">
@@ -118,6 +125,16 @@ footer{
   <option>Red</option>
   <option selected>Green</option>
 </select>
+
+<label style="color: black">Search your Product </label>
+<input id="lst" list="products">
+<datalist id="products">
+ <option>Notebooks</option>
+ <option>Chromebooks</option>
+ <option>Textbooks</option>
+ <option>Exercisebooks</option>
+ <option>Laptop</option>
+</datalist>
 
 <script>
   var submit = document.getElementById("sel").value;
