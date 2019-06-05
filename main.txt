@@ -1,0 +1,136 @@
+main.cpp:
+#include"system_boot.h"
+#include"system_os.h"
+
+
+static inline unsigned int boot_system(struct S_BOOT::SYS_B::SYS*, ...);
+
+int32_t __START_MAIN_ENTRY(void){
+
+  static SYSTEM_BOOT::SYS_BOOT::SYS system_boot ={.bootstrap_sys = SLEEP_SYS(0X00000001)};
+  
+  sys_boot = boot_system(&system_boot);
+  
+  char sys_mbr[] = "System was unable to boot successfully. Please check if any new hardware has being installed on the System. For Technical support contact ****011220019992. Error code 0x00188828ACFF99.";
+
+  if(sys_boot == 32 || 32 > sys_boot){
+    std::cout<<"\n\n\n\n\t\t\t\tSystem booting......"<<std::endl;
+  }
+  else{
+    printf("\n\n\n\n%s", sys_mbr);
+  }
+  return 0x00;
+}
+
+static inline unsigned int boot_system(struct S_BOOT::SYS_B::SYS* system, ...){
+       
+       sys = new system_os<std::string, string, 0x00002FeeBEE>();
+
+       return (*system).bootstrap_sys;
+}
+
+
+
+
+system_boot.h:
+
+#include<iostream>
+#include<stdio.h>
+#include<stdlib.h>
+#include<typeinfo>
+
+#ifndef __cplusplus 
+#define __cplusplus 1
+#endif//__cplusplus
+
+#ifdef __cplusplus
+extern "C"{
+#endif//__cplusplus
+
+#define __BOOTING_SYSTEM
+
+#undef __START_MAIN_ENTRY 
+#define __START_MAIN_ENTRY main
+
+#ifdef __START_MAIN_ENTRY
+#define BEGIN_CODE {
+#define END_CODE }
+/*#elif __start_main*/
+#define Restart_system 00
+#define REBOOT_SYSTEM 0x00a
+#define SLEEP_SYS(NUMBER_TIMES_SYS_SLEEPS) (16 << NUMBER_TIMES_SYS_SLEEPS)
+#else
+#define OPEN_DVD_BEEP(open_dvd_drive) (09/open_dvd_drive)
+#endif//__START_MAIN_ENTRY point program
+
+#ifdef __cplusplus
+}
+#endif//__cplusplus
+
+#define ___stdcel
+#define __callback_main
+#define __cdcel __callback_main
+
+typedef int int32_t;
+typedef int32_t *pint32_t, **ptr_int32_t;
+
+static int sleep_sys;
+static unsigned int sys_boot;
+
+namespace SYSTEM_BOOT{
+ namespace SYS_BOOT{
+   struct SYS{
+     public:
+      unsigned int bootstrap_sys;
+   };
+ }
+namespace SYS_B = SYS_BOOT;
+}
+namespace S_BOOT = SYSTEM_BOOT;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+system_os.h:
+
+#include"system_boot.h"
+
+using namespace std;
+
+namespace sys_os{
+template<typename SYS_OS, class SYS_BOOT_LOADER, int sys_boot_report = 0x399398AB99A>
+ class system_os{
+   private:
+    SYS_OS sys_operating_sys;
+    SYS_BOOT_LOADER grub_bootloader;
+    SYS_OS* sys_kernel_sp;
+  public:
+    system_os(SYS_OS sys_operating_sys = "Windows 7 Utimate OS")
+    :sys_operating_sys(sys_operating_sys){
+       grub_bootloader = "GNU GRUB BOOTLOADER IS THE DEFAULT BOOTLOADER THAT IS CURRENTLY BEING USED BY THE SYSTEM.";
+       sys_kernel_sp = (SYS_OS*)malloc(sizeof(sys_operating_sys));
+    }
+
+    virtual __BOOTING_SYSTEM ~system_os();
+ }
+}
+
+template<typename SYS_OS, class SYS_BOOT_LOADER, int sys_boot_report>
+sys_os::system_os<SYS_OS, SYS_BOOT_LOADER, sys_boot_report>::~system_os(){
+  free(sys_kernel_sp);
+}
+
+using namespace sys_os;
+
+extern system_os<std::string, string, 0x00002FeeBEE> *sys;
