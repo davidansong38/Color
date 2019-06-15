@@ -25,6 +25,8 @@ __main_entry_start __stdcel(int4_t argc, PTCHAR argv)
 
   (*mouse_0x00001).send_request_to_system(true);
    kdriver_messenger(keyboard);
+  
+  delete mouse_0x00001;
 
   return status_main_exit;
 }
