@@ -40,6 +40,8 @@ typedef union __n_of_hops{
 }
 #endif//Error handling on Some macro
 
+#include<sys_info>
+
 #define __callback_main
 #define __stdecl __callback_main
 #define __codecl
@@ -88,18 +90,22 @@ namespace system_address{
       bool look_addr_up(const char *const = "No request made to the system");
       void operator()(char sys_resp[]){
         using namespace std;
- 
-        cout<<"Your LocalHost IPaddress is  "<<sys_resp<<endl;
-        
+        char* sys_ACK[] = {"Thanks for using this service.", "System wasn't able to finish processing your request....", "@root:/usr/bin/sys_core_down/running....."};
+
+        cout<<"Your LocalHost IP address is  "<<sys_resp<<endl;
+        printf("__SYS_ACK_FNKD__ %s", sys_ACK[1]);
         return;
       }
    };
     template<class SYS_ADDR_1, typename SYS_ADDR_2, class SYSTEM_ADDR_PARAM, bool SYS_ADDR_PARAM, unsigned long nOfAddresses_to_use>
     inline bool sys_address<SYS_ADDR_1, SYS_ADDR_2,SYSTEM_ADDR_PARAM, SYS_ADDR_PARAM,nOfAddresses_to_use>::look_addr_up(const char *const sys_res){
-
+        bool quite = false;
+        (*this).host_ip_addr = "192.168.0.0";
         printf("Request is being processed......");
         std::cout<<sys_res<<std::endl;
         this->operator()(this->host_ip_addr);
+
+        return quite = (0x2 > 1)?true : false;
     }
  }
 }
@@ -117,7 +123,7 @@ namespace{
     public:
      virtual void run_address_diagnostics(){
        
-       this->look_addr_up("Request almost done processing....");
+       this->look_addr_up("\nRequest almost done processing....");
         
        return;
      }
@@ -130,7 +136,7 @@ __callback_main int4_t __stdecl __start_main __codecl(){
  
  try{
     {
-      
+      (*ssys_in).run_address_diagnostics();
     }
 
     throw new ::ssys_addr_in;
