@@ -2,7 +2,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<typeinfo>
-#include<sys_info>
 
 #pragma once 
 #undef __cplusplus
@@ -83,13 +82,14 @@ namespace system_address{
          total_nOfAddresses_to_use = 30;
       }
       virtual __SYSTEM_ADDR ~sys_address()__SYS_ADDRESS;
+
      public:
       virtual void run_address_diagnostics() = 0;
       bool look_addr_up(const char *const = "No request made to the system");
       void operator()(char sys_resp[]){
         using namespace std;
  
-        cout<<sys_resp<<endl;
+        cout<<"Your LocalHost IPaddress is  "<<sys_resp<<endl;
         
         return;
       }
@@ -97,7 +97,6 @@ namespace system_address{
     template<class SYS_ADDR_1, typename SYS_ADDR_2, class SYSTEM_ADDR_PARAM, bool SYS_ADDR_PARAM, unsigned long nOfAddresses_to_use>
     inline bool sys_address<SYS_ADDR_1, SYS_ADDR_2,SYSTEM_ADDR_PARAM, SYS_ADDR_PARAM,nOfAddresses_to_use>::look_addr_up(const char *const sys_res){
 
-        
         printf("Request is being processed......");
         std::cout<<sys_res<<std::endl;
         this->operator()(this->host_ip_addr);
@@ -118,16 +117,32 @@ namespace{
     public:
      virtual void run_address_diagnostics(){
        
-
+       this->look_addr_up("Request almost done processing....");
         
        return;
      }
   }systm_address;
 }
+
+static ::ssys_addr_in *ssys_in = new ::ssys_addr_in;
+
 __callback_main int4_t __stdecl __start_main __codecl(){
  
-  
+ try{
+    {
+      
+    }
+
+    throw new ::ssys_addr_in;
+ }
+ catch(::ssys_addr_in* ssys_addr){
+
+
+ }
+ catch(...){
+
+
+ }
 
   return 0x00000000L;
 }
-
