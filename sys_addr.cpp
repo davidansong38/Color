@@ -40,8 +40,6 @@ typedef union __n_of_hops{
 }
 #endif//Error handling on Some macro
 
-#include<sys_info>
-
 #define __callback_main
 #define __stdecl __callback_main
 #define __codecl
@@ -61,6 +59,29 @@ typedef PCHAR PTCHAR[];
 #define __SYSTEM_ADDR __SSYSTEM_ADDR
 #define __SYS_ADDRESS __SYSTEM_ADDR
 
+template<typename TYPE>
+TYPE setup(){
+   char* dail_up;
+   const char *const phone_code[2][2][3] = 
+                      {
+                        {{"#124*", "#1321*", "#111*"},{"#190*", "#404"}},
+                        {{"#333*", "#211*"},{"#125*", "#303*"}}
+                      };
+  
+  puts("Dail up here : ");
+  scanf("%s", &(*dail_up));
+  printf("USSD Connecting.....");
+  if(dail_up == phone_code[0][0][0]){
+    puts("Connected successfully.")
+  }
+  else if(dail_up == phone_code[0][0][2]){
+    std::cout<<"System busy at the moment..."<<std::endl;
+  }
+  else{
+    std::cout<<"System not responding..."<<std::endl;
+  }
+  return 0;
+}
 namespace system_address{
   namespace{
    template<class SYS_ADDR_1, typename SYS_ADDR_2 = PCHAR, class SYSTEM_ADDR_PARAM = bool, bool SYS_ADDR_PARAM = false, unsigned long nOfAddresses_to_use = 0>
@@ -87,7 +108,7 @@ namespace system_address{
 
      public:
       virtual void run_address_diagnostics() = 0;
-      bool look_addr_up(const char *const = "No request made to the system");
+      bool look_addr_up(const char *const = "No request made to the system", ...);
       void operator()(char sys_resp[]){
         using namespace std;
         char* sys_ACK[] = {"Thanks for using this service.", "System wasn't able to finish processing your request....", "@root:/usr/bin/sys_core_down/running....."};
@@ -98,7 +119,7 @@ namespace system_address{
       }
    };
     template<class SYS_ADDR_1, typename SYS_ADDR_2, class SYSTEM_ADDR_PARAM, bool SYS_ADDR_PARAM, unsigned long nOfAddresses_to_use>
-    inline bool sys_address<SYS_ADDR_1, SYS_ADDR_2,SYSTEM_ADDR_PARAM, SYS_ADDR_PARAM,nOfAddresses_to_use>::look_addr_up(const char *const sys_res){
+    inline bool sys_address<SYS_ADDR_1, SYS_ADDR_2,SYSTEM_ADDR_PARAM, SYS_ADDR_PARAM,nOfAddresses_to_use>::look_addr_up(const char *const sys_res, ...){
         bool quite = false;
         (*this).host_ip_addr = "192.168.0.0";
         printf("Request is being processed......");
@@ -127,6 +148,11 @@ namespace{
         
        return;
      }
+
+    float settings(){
+       
+       return 0.0;
+    }
   }systm_address;
 }
 
@@ -135,15 +161,19 @@ static ::ssys_addr_in *ssys_in = new ::ssys_addr_in;
 __callback_main int4_t __stdecl __start_main __codecl(){
  
  try{
+    static ::ssys_addr_in ssys[5];
     {
-      (*ssys_in).run_address_diagnostics();
+      ssys[0].run_address_diagnostics();
+      printf("%s", "\nRe-printing output....\n");
+      ssys[1].run_address_diagnostics();
     }
-
+    
+    delete ssys_in;
     throw new ::ssys_addr_in;
  }
  catch(::ssys_addr_in* ssys_addr){
-
-
+ 
+   cout<<(*ssys_addr).
  }
  catch(...){
 
