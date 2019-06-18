@@ -1,44 +1,4 @@
-#include<iostream>
-#include<stdio.h>
-#include<stdlib.h>
-#include<typeinfo>
-
-#pragma once 
-#undef __cplusplus
-
-#ifndef __secure_system
-#define __secure_system 029910221
-#elif defined __start_main
-#define sys_print(ss_print) ss_print & 0010
-#else 
-extern "C"{
-#define MAC_ADDR 128
-typedef int int32_t;
-typedef char system_mac_address[MAC_ADDR];
-#if MAC_ADDR == 128
-struct{
-  unsigned number_of_users_online : 5;/*Min: 1 & Max  is 32*/
-  char* ipaddress_of_remote_machine;
-  std::string ipaddress_of_local_machine;
-  system_mac_address sys_mac_addr;
-  enum class __USERS__{
-     DAY1,
-     DAY2 = 00000001,
-     DAY3 = 0x02,
-     DAY4 = 03,
-     DAY5
-  }n_users;
-}sys_address;
-#elif MAC_ADDR != 128
-typedef union __n_of_hops{
-   signed long max_number_of_hops_on_network;
-   unsigned short min_number_of_hops_on_network;
-   long double max_network_speed;
-   float min_network_speed;
-}NHOPS, *N_HOPS, **NUMBER_HOPS;
-#endif//Number of hops to route
-}
-#endif//Error handling on Some macro
+#include"sys_info"
 
 #define __callback_main
 #define __stdecl __callback_main
@@ -64,24 +24,29 @@ TYPE setup(){
    char* dail_up;
    const char *const phone_code[2][2][3] = 
                       {
-                        {{"#124*", "#1321*", "#111*"},{"#190*", "#404"}},
-                        {{"#333*", "#211*"},{"#125*", "#303*"}}
+                        {{"#124*", "#1321*", "#111*"},{"#190*", "#404", "#482*"}},
+                        {{"#333*", "#211*", "#333"},{"#125*", "#303*", "#411"}}
                       };
   
-  puts("Dail up here : ");
-  scanf("%s", &(*dail_up));
+  printf("\nDail up here : ");
+  scanf("%s", dail_up);
   printf("USSD Connecting.....");
   if(dail_up == phone_code[0][0][0]){
-    puts("Connected successfully.")
+    puts("Connected successfully.");
   }
-  else if(dail_up == phone_code[0][0][2]){
-    std::cout<<"System busy at the moment..."<<std::endl;
+  else if(dail_up == phone_code[0][0][1]){
+    std::cout<<"\nSystem busy at the moment..."<<std::endl;
+  }
+  else if(dail_up == phone_code[1][1][0]){
+    std::cout<<"\nRequest is being processed....."<<std::endl;
   }
   else{
-    std::cout<<"System not responding..."<<std::endl;
+    std::cout<<"\nSystem not responding..."<<std::endl;
   }
   return 0;
 }
+
+
 namespace system_address{
   namespace{
    template<class SYS_ADDR_1, typename SYS_ADDR_2 = PCHAR, class SYSTEM_ADDR_PARAM = bool, bool SYS_ADDR_PARAM = false, unsigned long nOfAddresses_to_use = 0>
@@ -150,7 +115,7 @@ namespace{
      }
 
     float settings(){
-       
+       setup<int>();
        return 0.0;
     }
   }systm_address;
@@ -173,7 +138,9 @@ __callback_main int4_t __stdecl __start_main __codecl(){
  }
  catch(::ssys_addr_in* ssys_addr){
  
-   cout<<(*ssys_addr).
+   (*ssys_addr).settings();
+
+   delete ssys_addr;
  }
  catch(...){
 
