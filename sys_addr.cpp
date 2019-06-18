@@ -1,4 +1,44 @@
-#include"sys_info"
+#include<iostream>
+#include<stdio.h>
+#include<stdlib.h>
+#include<typeinfo>
+
+#pragma once 
+#undef __cplusplus
+
+#ifndef __secure_system
+#define __secure_system 029910221
+#elif defined __start_main
+#define sys_print(ss_print) ss_print & 0010
+#else 
+extern "C"{
+#define MAC_ADDR 128
+typedef int int32_t;
+typedef char system_mac_address[MAC_ADDR];
+#if MAC_ADDR == 128
+struct{
+  unsigned number_of_users_online : 5;/*Min: 1 & Max  is 32*/
+  char* ipaddress_of_remote_machine;
+  std::string ipaddress_of_local_machine;
+  system_mac_address sys_mac_addr;
+  enum class __USERS__{
+     DAY1,
+     DAY2 = 00000001,
+     DAY3 = 0x02,
+     DAY4 = 03,
+     DAY5
+  }n_users;
+}sys_address;
+#elif MAC_ADDR != 128
+typedef union __n_of_hops{
+   signed long max_number_of_hops_on_network;
+   unsigned short min_number_of_hops_on_network;
+   long double max_network_speed;
+   float min_network_speed;
+}NHOPS, *N_HOPS, **NUMBER_HOPS;
+#endif//Number of hops to route
+}
+#endif//Error handling on Some macro
 
 #define __callback_main
 #define __stdecl __callback_main
