@@ -4,7 +4,57 @@
 #include<typeinfo>
 #include<new>
 #include<exception>
-#include"sys"
+#pragma once
+
+#undef __cplusplus
+#define UNKNOWN_LINE 03
+
+#ifdef __cplusplus
+#error A++ Please the macro defined here is not required by the\ Standard ANSI C or ISO/IEC C++
+#line UNKNOWN_LINE __FILE__
+#warning Please check a macro __cplusplus
+#elif defined __start_main
+#define __callback_main
+#define __codecl __callback_main
+#define __stdecl __codecl
+#else
+#define send_id "Sending System ID....."
+#define MessageBoxId(send_id) 
+#endif//__cplusplus
+
+#if UNKNOWN_LINE == 03
+#ifndef __cplusplus
+extern "C"{
+#endif//__cplusplus
+  #define __start_main main 
+  #define __callback_main
+  #define __codecl __callback_main
+  #define __stdecl __codecl
+#ifndef __cplusplus
+}
+#endif
+#elif UNKNOWN_LINE == 0
+ #define SYS_IN(sys_in, bit_f) (sys_in & 00100010)<<bit_f
+ #define ssl "Connection to this system is secured"
+ #define SYS_SEC ssl
+#else
+ #define DCLASS 120
+ typedef char *dv_address, dv_class;
+ typedef dv_address dv_manufacture_date;
+ typedef unsigned long dv_ID;
+ typedef typename std::string dv_Name;
+ typedef typename std::string dv_manufacturer;
+ struct{
+   dv_Name device_name1;
+   dv_address device_address_io;
+   dv_ID dv_id;
+   dv_manufacturer device_manufacturer;
+   dv_manufacture_date device_manu_date;
+   dv_class device_class[DCLASS];
+ }hdevice_comp_list;
+#endif/*Error handling on UNKNOWN_LINE*/
+
+
 
 typedef int int32_t, int4_t;
 typedef char* PCHAR;
