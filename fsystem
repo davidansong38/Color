@@ -1,0 +1,49 @@
+#include"filesystem/fsystem_io_processing.h"
+#include<typeinfo>
+#include<new>
+#include<exception>
+#include"device_management/device_manager"
+
+#pragma once
+
+#define __file_number 0x1U
+
+#ifdef __file_number 
+extern "C"{
+#endif//__file_number
+
+       typedef int start_success_identifier;
+       typedef start_success_identifier CMD_LINE_COUNTER;
+       typedef char *CMD_LINE_POINTER;
+       typedef CMD_LINE_POINTER CMDLINE_STR[];
+    
+  namespace{
+     namespace filesys{
+       typedef CMD_LINE_POINTER filesystem_name, filesystem_type;
+       typedef long double filesystem_gui_reader;
+       typedef long filesystem_id;
+       typedef unsigned short filesystem_write_operation, filesystem_read_operation, filesystem_exec_operation;
+       typedef bool filesystem_reporter;
+
+       typedef struct ZNX_FILESYSTEM{
+           filesystem_name fsystem_name;
+           filesystem_type fsystem_type;
+           filesystem_gui_reader fsystem_processor;
+           filesystem_id fsystem_id : 9;
+           struct{
+              filesystem_write_operation fsystem_write_op;
+              filesystem_read_operation fsystem_read_op;
+              filesystem_exec_operation fsystem_exec_op;
+              filesystem_reporter filesystem_reporter_value;
+           }foperator_permisser;
+          struct ZNX_FILESYSTEM* znxFilesystem;
+        }ZFILESYSTEM, *ZNFILESYSTEM, **ZNXFILESYSTEM;
+    }
+    namespace fsys = filesys;
+  }
+#ifdef __file_number
+}
+#endif//__file_number
+
+#define sleep_process sleep
+
