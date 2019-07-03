@@ -1,0 +1,23 @@
+#include"driver_store/drv_store.h"
+namespace network{
+  namespace net_worker{
+    template<class Net_Name, typename Net_Country = std::string, typename Net_USSID = char*, class Net_Passcode = char*, unsigned net_daily_report = 1> 
+    class NETWORK_MANAGER{
+       private:
+         Net_Name netName;
+         Net_Country netCountry;
+         Net_USSID netUSSID;
+         Net_Passcode netPasscode;
+         unsigned network_reporter;
+       public:
+        NETWORK_MANAGER() = default;
+        NETWORK_MANAGER(Net_Name netName, Net_Country nCountry= "Ghana")
+        :netName(netName), netCountry(nCountry), netPasscode("KHDDIE993K22"){
+          netUSSID = "SSEIEIII932LD";
+        }
+
+    };
+  }
+  namespace netWorker = net_worker;
+}
+namespace net = network;
