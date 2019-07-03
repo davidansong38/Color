@@ -1,0 +1,27 @@
+/*This software is free to the public and can be used in both commercial and open-source programs or software. Please to use this 
+application, one needs to goto the device_management project folder which includes all the necessary library files for handling secondary
+or auxiliary storage medium/devices. Happy Devicing.....*/
+
+#pragma once 
+
+#define USB_DRIVE(usb_drive) usb_drive
+#define HDD_DRIVE(hdd_drive) hdd_drive
+#define CD_RWorROM(cd_rw_rom) cd_rw 
+#define FDD_DRIVE(fdd_drive) fdd_drive 
+#define SSD_DRIVE(ssd_drive) ssd_drive
+
+#if USB_DRIVE(usb_drive) == 0x00000001
+#define IsDeviceNameUsb "Generic San disk - HD9939DKKDIIIKD"
+#elif HDD_DRIVE(hdd_drive) == 02
+#define IsDeviceNameHdd "IDE - HKD9IEWAALEE9449"
+#elif CD_RWorROM(cd_rw) == 00000011
+#define IsDeviceNameCdRwRom "Optical drive verises 99332229dsi"
+#elif FDD_DRIVE(fdd_drive) == 4
+#define IsDeviceNameFdd "Floppy rider EEE933LL223000001"
+#elif SSD_DRIVE(ssd_drive) == 0x5
+#define IsDeviceNameSdd "Solid state storage medium"
+#else
+#define IsDeviceUnknown(system_detect_failure)\ system_detect_failure
+#endif/*Drive Names */
+
+#define Manager_Name(dev_manager) dev_manager
