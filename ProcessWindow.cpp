@@ -111,6 +111,8 @@ static const void selector(unsigned select){
   return;
 }
 
+static inline FILE readTextInFile(FILE* = NULL);
+
 unsigned long QuitDestroySelector(void**);
 //ProcessWindowDescriptor
 int main(int argc, char* argv[]){
@@ -149,8 +151,12 @@ exit_1:
  throw eCode;
 }
 catch(int& erCodeProcess){
-  erCodeProcess = 404004;
+  FILE fileRead;
+
+  erCodeProcess = 40404;
   std::cout<<"Current running process was unable to terminate because another process is currently using this process or application. Please use this error code to technical force the current running process to terminate successfully.For technical support contact us with Error code 0x00ADFFed92882"<<erCodeProcess<<std::endl;
+  readTextInFile(&fileRead);
+  
   goto exit_2;
 }
 catch(...){
@@ -189,4 +195,23 @@ unsigned long QuitDestroySelector(void** processWM){
   processWndM = *curProcess;
 
   return processWndM.ProcessWindowDescriptor;
+}
+
+#define FileToServe __FILE__
+#define ReadMode "r"
+//#define NULL 0
+
+FILE readTextInFile(FILE* fileReader){
+
+  fileReader = (FILE*)malloc(sizeof(fileReader));
+
+  fileReader = fopen(FileToServe, ReadMode);
+  char fileContainer[1024], ch;
+  char* filePlayer;
+
+  while( (ch = getc(fileReader)) != EOF) {
+  /*getc() function reads a character and its value is stored in variable 'ch' until EOF is encountered*/
+   printf("%c", ch);
+  }
+  return *fileReader;
 }
