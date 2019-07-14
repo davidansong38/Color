@@ -33,14 +33,23 @@
           SchoolManagementSystemForStudents(const  SchoolManagementSystemForStudents&) = delete;
           SchoolManagementSystemForStudents& operator=(const  SchoolManagementSystemForStudents&) = delete;
         public:
-         SchoolManagementSystemForStudents(StudName StudentName, StudClassName SClassName = "Science Class") : StudentName(new StudName(StudentName)), StudentClassName(SClassName), StudentID(000000){
-           StudentClassID = ~(000000)<<1;
-           
-         }
+         SchoolManagementSystemForStudents(StudName StudentName, StudClassName = "Science Class");
+         virtual ~SchoolManagementSystemForStudents();
 
          friend class StudentDB;
          friend void StudendtDatabaseMessenger(void);
       };
     }
     namespace SchoolDatabaseSystemForStudents = School_ManagementSystemForStudents;
+}
+
+template<class StudName, typename StudID, class StudClassName , typename StudClassID, bool SchooLStudDBDdescriptor>
+::SchoolDatabaseSystemForStudents::SchoolManagementSystemForStudents<StudName, StudID, StudClassName,StudClassID,SchooLStudDBDdescriptor>::SchoolManagementSystemForStudents(StudName StudentName, StudClassName SClassName) : StudentName(new StudName(StudentName)), StudentClassName(SClassName), StudentID(000000){
+   StudentClassID = ~(000000)<<1;
+   std::cout<<"School Database Management System initializing............."<<std::endl;
+}
+
+template<class StudName, typename StudID, class StudClassName , typename StudClassID, bool SchooLStudDBDdescriptor>
+::SchoolDatabaseSystemForStudents::SchoolManagementSystemForStudents<StudName, StudID, StudClassName,StudClassID,SchooLStudDBDdescriptor>::~SchoolManagementSystemForStudents(){
+  delete StudentName;
 }
