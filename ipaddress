@@ -1,0 +1,65 @@
+#include<iostream>
+#include<stdlib.h>
+#include<stdio.h>
+#include<new>
+#include<typeinfo>
+#include<exception>
+
+#pragma once
+
+using namespace std;
+#define MessageBox(messages) cout<<messages<<endl
+#define dllexport extern 
+#define __declpsec(dll) dll
+__declpsec(dllexport) void showmessage(const char[] = "No message from Kwame yet", ...);
+
+#define UNKNOWN_LINE_N 03
+#define FILENAME __FILE__
+#define errorInMacroDefinition "A C/C++ Compiler is requiered\ here"
+#define warningInMacroDefinition "Please a macro defined in your program/Software is not allowed"
+
+#ifdef __cplusplus
+#undef __cplusplus
+#endif//Error handling for __cplusplus
+
+#ifndef __cplusplus
+extern "C"{
+#endif//
+
+  #ifndef __cplusplus
+    #define __callback_main
+    #define __codecl __callback_main
+    #define _stdcel __codecl
+  #elif defined __start_main
+    typedef int int32_t, int4_t;
+    typedef int32_t CMDARGC;
+    typedef char *CMDARGVEC;
+    typedef CMDARGVEC CMDARGCONTAINER[];
+  #define __start_main() main(CMDARGC cmdLineArgumentCounter, CMDARGCONTAINER cmdLineArgumentContainer)
+  #else
+struct{
+  signed unused;
+}unusedID;
+ #if UNKNOWN_LINE_N == 00
+   #line UNKNOWN_LINE_N FILENAME 
+   #error errorInMacroDefinition
+   #warning warningInMacroDefinition
+ #elif UNKNOWN_LINE_N == 02
+   typedef char **systemDown01
+   union{
+      systemDown01 sysDown0x1;
+   }sys_D;
+ #else 
+  #define dllexport extern 
+  #define __declpsec(dll) dll
+  char* message;
+  using namespace std;
+  #define MessageBox(messages) cout<<messages<<endl
+  void showmessage(const char[] = "No message from Kwame yet", ...);
+ #endif//
+
+#endif//
+
+#ifndef __cplusplus
+}
+#endif/*New error handling for __cplusplus which will be used to externed the above code*/
