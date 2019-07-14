@@ -204,14 +204,23 @@ unsigned long QuitDestroySelector(void** processWM){
 FILE readTextInFile(FILE* fileReader){
 
   fileReader = (FILE*)malloc(sizeof(fileReader));
-
   fileReader = fopen(FileToServe, ReadMode);
+  
   char fileContainer[1024], ch;
   char* filePlayer;
-
+  FILE* file = NULL;
+  file = (FILE*)malloc(sizeof(fileReader));
+  file = fopen("readMe.dav", "w");
   while( (ch = getc(fileReader)) != EOF) {
   /*getc() function reads a character and its value is stored in variable 'ch' until EOF is encountered*/
-   printf("%c", ch);
+
+   fprintf(file, "%c", ch);
   }
+  
+  fclose(fileReader);
+  fclose(file);
+  free(fileReader);
+  free(file);
+  
   return *fileReader;
 }
